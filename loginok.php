@@ -5,7 +5,14 @@ error_reporting(E_ALL);
 require_once 'vendor/autoload.php';
 use Firebase\JWT\JWT;
 
-$jwt = $_GET["TOKEN"];/*TOKEN  =) */
+$ref = $_GET["ref"]
+
+$jwt = $_GET["TOKEN"];
+
+if ($ref === "y")
+	$jwt= CallAPI("GET","https://ssoia.herokuapp.com/JWT/refresh",$tenantK);
+
+	/*TOKEN  =) */
 
 
 $key = getenv('PUBLIC_TOKEN_K'); /*KEY PUBLICA PARA VERIFICAR FIRMA */
@@ -18,6 +25,8 @@ list($headb64, $bodyb64, $cryptob64) = $tks;
 $decoded = JWT::decode($jwt, $key, array('HS512'));
 $decoded_array = (array) $decoded;
 $userInfo = "";
+
+
 $userInfo = CallAPI("GET","https://ssoia.herokuapp.com/Usuarios/".$decoded_array["client_id"],$tenantK);
 
 function CallAPI($method, $url, $tenantK, $data = false)
@@ -83,6 +92,9 @@ function CallAPI($method, $url, $tenantK, $data = false)
 
 	?>
 </code>
+
+<a href="./loginok.php?TOKEN=".$jwt. "&ref=y">REFRESH TOKEN</a>
+
 
 
 </body>
