@@ -48,7 +48,7 @@ function CallAPI($method, $url, $data = false)
 
 	$headers = array(
     	'Content-type: application/json',
-    	'x-api-key: $key',
+    	'x-api-key:'.$key,
 	);
 	curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
