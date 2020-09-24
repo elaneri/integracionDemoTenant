@@ -5,10 +5,12 @@ error_reporting(E_ALL);
 require_once 'vendor/autoload.php';
 use Firebase\JWT\JWT;
 
-$ref = $_GET["REF"]
+$ref = $_GET["REF"];
 
 $jwt = $_GET["TOKEN"];
 
+if ($ref === "y")
+	$jwt= CallAPI("GET","https://ssoia.herokuapp.com/JWT/refresh",$tenantK);
 
 	/*TOKEN  =) */
 
@@ -90,6 +92,11 @@ function CallAPI($method, $url, $tenantK, $data = false)
 
 	?>
 </code>
+
+<?php
+echo '<a href="./loginok.php?TOKEN="'.$jwt.'"&REF=y>REFRESH TOKEN</a>' ;
+?>
+
 
 
 </body>
