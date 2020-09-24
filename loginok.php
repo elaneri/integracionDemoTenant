@@ -5,19 +5,20 @@ error_reporting(E_ALL);
 require_once 'vendor/autoload.php';
 use Firebase\JWT\JWT;
 
-$jwt = $_GET["TOKEN"];
-$key = getenv('PUBLIC_TOKEN_K');
+$jwt = $_GET["TOKEN"];/*TOKEN  =) */
 
+
+$key = getenv('PUBLIC_TOKEN_K'); /*KEY PUBLICA PARA VERIFICAR FIRMA */
+$tenantK = getenv('TENANT_K'); /*KEY DEL TENANT  VERIFICAR TENANT */
 
 $tks = explode('.', $jwt);       
 list($headb64, $bodyb64, $cryptob64) = $tks;
-$header = \Firebase\JWT\JWT::jsonDecode(Firebase\JWT\JWT::urlsafeB64Decode($headb64));
 
 
 $decoded = JWT::decode($jwt, $key, array('HS512'));
 $decoded_array = (array) $decoded;
 $userInfo = "";
-$userInfo = CallAPI("GET","https://ssoia.herokuapp.com/Usuarios/".$decoded_array["client_id"],$key);
+$userInfo = CallAPI("GET","https://ssoia.herokuapp.com/Usuarios/".$decoded_array["client_id"],$tenantK);
 
 function CallAPI($method, $url, $apkkey, $data = false)
 {
@@ -48,7 +49,7 @@ function CallAPI($method, $url, $apkkey, $data = false)
 
 	$headers = array(
     	'Content-type: application/json',
-    	'x-api-key:'.$key,
+    	'x-api-key:'.$tenantK,
 	);
 	curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
