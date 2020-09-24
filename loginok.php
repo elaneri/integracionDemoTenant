@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 require_once 'vendor/autoload.php';
 use Firebase\JWT\JWT;
 
-$ref = $_GET["ref"]
+$ref = $_GET["REF"]
 
 $jwt = $_GET["TOKEN"];
 
@@ -93,8 +93,9 @@ function CallAPI($method, $url, $tenantK, $data = false)
 	?>
 </code>
 
-<a href="./loginok.php?TOKEN=".$jwt. "&ref=y">REFRESH TOKEN</a>
-
+<?php
+echo "<a href=\"./loginok.php?TOKEN=\"".$jwt. "\"&REF=y\>REFRESH TOKEN</a>";
+?>
 
 
 </body>
