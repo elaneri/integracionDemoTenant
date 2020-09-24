@@ -79,7 +79,8 @@ function CallAPI($method, $url, $tenantK, $data = false)
 <p>
 	<?php
 
-	echo "USER INFO :\n" . $userInfo . "\n";
+
+	echo "USER INFO :\n" . json_encode($userInfo, JSON_PRETTY_PRINT) . "\n";
 
 	?>
 </p>
