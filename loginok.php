@@ -9,6 +9,11 @@ $jwt = $_GET["TOKEN"];
 $key = getenv('PUBLIC_TOKEN_K');
 
 
+$tks = explode('.', $jwt);       
+list($headb64, $bodyb64, $cryptob64) = $tks;
+$header = \Firebase\JWT\JWT::jsonDecode(Firebase\JWT\JWT::urlsafeB64Decode($headb64));
+var_dump($header->alg);
+
 
 $data = JWT::decode($jwt, $key, array('HS256'));
 print_r($data);
