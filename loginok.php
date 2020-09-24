@@ -91,10 +91,6 @@ function CallAPI($method, $url, $tenantK, $data = false)
 	?>
 </code>
 
-<?php
-echo '<a href="./loginok.php?TOKEN="'.$jwt.'"&REF=y>REFRESH TOKEN</a>';
-?>
-
 
 </body>
 </html> 
