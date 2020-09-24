@@ -12,7 +12,7 @@ $tenantK = getenv('TENANT_K'); /*KEY DEL TENANT  VERIFICAR TENANT */
 $jwt = $_GET["TOKEN"];
 
 if (isset($_GET["REF"]))
-	$jwt= CallAPI("GET","https://ssoia.herokuapp.com/JWT/refresh",$tenantK);
+	$jwt= CallAPI("GET","https://ssoia.herokuapp.com/JWT/refresh",$tenantK, $jwt);
 
 	/*TOKEN  =) */
 
@@ -28,9 +28,9 @@ $decoded_array = (array) $decoded;
 $userInfo = "";
 
 
-$userInfo = CallAPI("GET","https://ssoia.herokuapp.com/Usuarios/".$decoded_array["client_id"],$tenantK);
+$userInfo = CallAPI("GET","https://ssoia.herokuapp.com/Usuarios/".$decoded_array["client_id"],$tenantK,$jwt);
 
-function CallAPI($method, $url, $tenantK, $data = false)
+function CallAPI($method, $url, $tenantK,$jwt, $data = false)
 {
     $curl = curl_init();
 
