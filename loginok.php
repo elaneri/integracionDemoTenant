@@ -15,7 +15,7 @@ $header = \Firebase\JWT\JWT::jsonDecode(Firebase\JWT\JWT::urlsafeB64Decode($head
 var_dump($header->alg);
 
 
-$data = JWT::decode($jwt, $key, array('HS256'));
+$data = JWT::decode($jwt, $key, array('HS512'));
 print_r($data);
 var_dump($data);
 
