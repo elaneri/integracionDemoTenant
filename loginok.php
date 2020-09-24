@@ -76,13 +76,13 @@ function CallAPI($method, $url, $tenantK, $data = false)
 
 	?>
 </p>
-<pre>
+<code>
 	<?php
 
-	echo "USER INFO :\n" . json_encode($userInfo, JSON_PRETTY_PRINT) . "\n";
+	echo "USER INFO :\n" . $userInfo . "\n";
 
 	?>
-</pre>
+</code>
 
 
 </body>
