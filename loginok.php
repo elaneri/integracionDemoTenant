@@ -14,14 +14,12 @@ $jwt = $_GET["TOKEN"];
 if (isset($_GET["REF"])){
 
 	$jwt= CallAPI("GET","https://ssoia.herokuapp.com/JWT/refresh",$tenantK, $jwt);
+
+	echo $jwt;
+	
 	$jwt=  str_replace("Bearer ", "", $jwt);
 } 
 	
-
-	/*TOKEN  =) */
-
-
-
 
 $tks = explode('.', $jwt);       
 list($headb64, $bodyb64, $cryptob64) = $tks;
