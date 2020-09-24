@@ -17,9 +17,9 @@ $header = \Firebase\JWT\JWT::jsonDecode(Firebase\JWT\JWT::urlsafeB64Decode($head
 $decoded = JWT::decode($jwt, $key, array('HS512'));
 $decoded_array = (array) $decoded;
 $userInfo = "";
-$userInfo = CallAPI("GET","https://ssoia.herokuapp.com/Usuarios/".$decoded_array["client_id"]);
+$userInfo = CallAPI("GET","https://ssoia.herokuapp.com/Usuarios/".$decoded_array["client_id"],$key);
 
-function CallAPI($method, $url, $data = false)
+function CallAPI($method, $url, $data = false, $apkkey)
 {
     $curl = curl_init();
 
