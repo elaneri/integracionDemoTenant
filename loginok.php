@@ -5,6 +5,9 @@ error_reporting(E_ALL);
 require_once 'vendor/autoload.php';
 use Firebase\JWT\JWT;
 
+$key = getenv('PUBLIC_TOKEN_K'); /*KEY PUBLICA PARA VERIFICAR FIRMA */
+$tenantK = getenv('TENANT_K'); /*KEY DEL TENANT  VERIFICAR TENANT */
+
 
 $jwt = $_GET["TOKEN"];
 
@@ -14,8 +17,7 @@ if (isset($_GET["REF"]))
 	/*TOKEN  =) */
 
 
-$key = getenv('PUBLIC_TOKEN_K'); /*KEY PUBLICA PARA VERIFICAR FIRMA */
-$tenantK = getenv('TENANT_K'); /*KEY DEL TENANT  VERIFICAR TENANT */
+
 
 $tks = explode('.', $jwt);       
 list($headb64, $bodyb64, $cryptob64) = $tks;
