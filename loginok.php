@@ -12,12 +12,12 @@ $key = getenv('PUBLIC_TOKEN_K');
 $tks = explode('.', $jwt);       
 list($headb64, $bodyb64, $cryptob64) = $tks;
 $header = \Firebase\JWT\JWT::jsonDecode(Firebase\JWT\JWT::urlsafeB64Decode($headb64));
-var_dump($header->alg);
 
 
 $decoded = JWT::decode($jwt, $key, array('HS512'));
 $decoded_array = (array) $decoded;
-$userIfo = CallAPI("GET","https://ssoia.herokuapp.com/Usuarios/"+$decoded_array["client_id"]);
+$userIfo = "";
+$userIfo = CallAPI("GET","https://ssoia.herokuapp.com/Usuarios/".$decoded_array["client_id"]);
 
 function CallAPI($method, $url, $data = false)
 {
@@ -45,7 +45,7 @@ function CallAPI($method, $url, $data = false)
 
     curl_setopt($curl, CURLOPT_URL, $url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-    
+
 	$headers = array(
     	'Content-type: application/json',
     	'x-api-key: $key',
