@@ -9,8 +9,6 @@ $ref = $_GET["REF"]
 
 $jwt = $_GET["TOKEN"];
 
-if ($ref === "y")
-	$jwt= CallAPI("GET","https://ssoia.herokuapp.com/JWT/refresh",$tenantK);
 
 	/*TOKEN  =) */
 
@@ -94,7 +92,7 @@ function CallAPI($method, $url, $tenantK, $data = false)
 </code>
 
 <?php
-echo "<a href=\"./loginok.php?TOKEN=\"".$jwt. "\"&REF=y\>REFRESH TOKEN</a>";
+echo '<a href="./loginok.php?TOKEN="'.$jwt.'"&REF=y>REFRESH TOKEN</a>';
 ?>
 
 
