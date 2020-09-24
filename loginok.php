@@ -20,7 +20,7 @@ $decoded_array = (array) $decoded;
 $userInfo = "";
 $userInfo = CallAPI("GET","https://ssoia.herokuapp.com/Usuarios/".$decoded_array["client_id"],$tenantK);
 
-function CallAPI($method, $url, $apkkey, $data = false)
+function CallAPI($method, $url, $tenantK, $data = false)
 {
     $curl = curl_init();
 
