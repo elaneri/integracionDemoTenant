@@ -11,8 +11,12 @@ $tenantK = getenv('TENANT_K'); /*KEY DEL TENANT  VERIFICAR TENANT */
 
 $jwt = $_GET["TOKEN"];
 
-if (isset($_GET["REF"]))
+if (isset($_GET["REF"])){
+
 	$jwt= CallAPI("GET","https://ssoia.herokuapp.com/JWT/refresh",$tenantK, $jwt);
+	$jwt=  str_replace("Bearer ", "", $jwt);
+} 
+	
 
 	/*TOKEN  =) */
 
