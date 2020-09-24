@@ -60,6 +60,7 @@ function CallAPI($method, $url, $tenantK, $data = false)
 	$headers = array(
     	'Content-type: application/json',
     	'x-api-key:'.$tenantK,
+    	'Authorization:Bearer '.$tenantK
 	);
 	curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
