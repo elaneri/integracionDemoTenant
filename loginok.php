@@ -13,11 +13,11 @@ $jwt = $_GET["TOKEN"];
 
 if (isset($_GET["REF"])){
 
-	$jwt= CallAPI("GET","https://ssoia.herokuapp.com/JWT/refresh",$tenantK, $jwt);
+	$refreshtoken= CallAPI("GET","https://ssoia.herokuapp.com/JWT/refresh",$tenantK, $jwt);
+	$jsonToken=json_decode($refreshtoken);
 
-	echo $jwt;
-	
-	$jwt=  str_replace("Bearer ", "", $jwt);
+
+	$jwt=  str_replace("Bearer ", "", $jsonToken["token"]);
 } 
 	
 
