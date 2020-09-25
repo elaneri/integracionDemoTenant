@@ -1,2 +1,1 @@
-# integracionDemoTenant
-# integracionDemoTenant
+# Ejemplo de implementación de sso en PHP 
